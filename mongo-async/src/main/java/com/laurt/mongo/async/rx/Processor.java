@@ -13,12 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.laurt.mongo.async.core;
+package com.laurt.mongo.async.rx;
 
-import com.mongodb.async.client.MongoCollection;
+import com.laurt.mongo.async.core.Aggregation;
+import com.laurt.mongo.async.core.Command;
+import com.laurt.mongo.async.core.Indexs;
+import com.laurt.mongo.async.core.Writer;
+import com.mongodb.rx.client.MongoClient;
+import com.mongodb.rx.client.MongoCollection;
 import lombok.extern.slf4j.Slf4j;
-import org.bson.BsonDocument;
 import org.bson.Document;
+
+import java.util.concurrent.ExecutionException;
 
 /**
  * <p>Title: Processor
@@ -51,28 +57,10 @@ public class Processor {
         command = new Command();
     }
 
-    public void process(String dbName, String collectionName) throws InterruptedException {
+    public void process(String dbName, String collectionName) throws InterruptedException, ExecutionException {
 
-        MongoCollection<Document> collection = collections.createCollection(dbName, collectionName);
-        Thread.sleep(1000);
-
-        BsonDocument document = collection.getWriteConcern().asDocument();
-        System.err.println(document.toJson());
-        long ts = System.currentTimeMillis();
-        writer.bulkWrite(collection);
-        indexs.createIndexs(collection);
-        System.err.println(" ==> timestamp " + (System.currentTimeMillis() - ts) + "ms");
-
-        System.out.println("--------------------------------------------");
-//        read.find(collection);
-        read.findWithProjection2(collection);
-
-        System.out.println("--------------------------------------------");
-//        aggregate.aggregate(collection);
-        System.out.println("--------------------------------------------");
-
-        System.out.println("--------------------------------------------");
-//        command.runCommand(Connections.newInstanceDefault().getDatabase("demo"));
-        System.out.println("--------------------------------------------");
+        MongoClient mongoClient = Connections.newInstanceDefault();
+        MongoCollection<Document> collection = collections.createCollection(mongoClient, dbName, collectionName);
+        read.find(collection);
     }
 }

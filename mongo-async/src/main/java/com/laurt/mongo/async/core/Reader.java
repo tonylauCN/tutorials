@@ -23,7 +23,7 @@ import static com.mongodb.client.model.Filters.*;
 import static com.mongodb.client.model.Projections.*;
 
 /**
- * <p>Title: DemoRead
+ * <p>Title: Reader
  * <p>Description: tutorials
  * <p>Copyright: 2017/9/24 下午3:10
  * <p>Company: rongshu
@@ -32,7 +32,7 @@ import static com.mongodb.client.model.Projections.*;
  *
  * @version v1.0.0
  */
-public class DemoRead {
+public class Reader {
 
 
     void find(MongoCollection<Document> mongoCollection) {
@@ -56,7 +56,7 @@ public class DemoRead {
      */
     void findWithProjection(MongoCollection<Document> mongoCollection) {
         long ts = System.currentTimeMillis();
-        mongoCollection.find(and(gte(Constants.MONGO_ACTIVITY_COUNT, 100)
+        mongoCollection.find(and(gte(Constants.MONGO_ACTIVITY_COUNT, 10)
                 , lte(Constants.MONGO_ACTIVITY_COUNT, 200)))
                 .projection(new Document(Constants.MONGO_ACTIVITY_BID, 1)
                         .append(Constants.MONGO_ACTIVITY_SID, 1)

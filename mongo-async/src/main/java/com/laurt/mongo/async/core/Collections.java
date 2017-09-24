@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.bson.Document;
 
 /**
- * <p>Title: DemoCollections
+ * <p>Title: Collections
  * <p>Description: tutorials
  * <p>Copyright: 2017/9/24 上午11:22
  * <p>Company: rongshu
@@ -37,7 +37,7 @@ import org.bson.Document;
  * @version v1.0.0
  */
 @Slf4j
-public class DemoCollections {
+public class Collections {
 
     /**
      * @param dbName
@@ -46,8 +46,8 @@ public class DemoCollections {
      */
     public MongoCollection<Document> createCollection(String dbName, String collectionName) {
 
-        MongoClient client = DemoConnections.newInstanceDefault();
-//         MongoClient client = DemoConnections.newInstanceWithNetty();
+        MongoClient client = Connections.newInstanceDefault();
+//         MongoClient client = Connections.newInstanceWithNetty();
 
         // 插入结构验证
         ValidationOptions validationOptions = new ValidationOptions().validator(

@@ -26,7 +26,7 @@ import java.util.Arrays;
 import static com.mongodb.client.model.Filters.and;
 
 /**
- * <p>Title: DemoAggregation
+ * <p>Title: Aggregation
  * <p>Description: tutorials
  * <p>Copyright: 2017/9/24 下午4:41
  * <p>Company: rongshu
@@ -35,7 +35,7 @@ import static com.mongodb.client.model.Filters.and;
  *
  * @version v1.0.0
  */
-public class DemoAggregation {
+public class Aggregation {
 
     void aggregate(MongoCollection<Document> mongoCollection) {
 

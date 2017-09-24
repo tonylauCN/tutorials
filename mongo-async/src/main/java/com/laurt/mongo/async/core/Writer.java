@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * <p>Title: DemoWrite
+ * <p>Title: Writer
  * <p>Description: tutorials
  * <p>Copyright: 2017/9/24 上午11:44
  * <p>Company: rongshu
@@ -35,7 +35,7 @@ import java.util.Random;
  *
  * @version v1.0.0
  */
-public class DemoWrite {
+public class Writer {
 
     // 15 behaviors
     private String[] behaviors = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o"};

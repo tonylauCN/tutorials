@@ -19,7 +19,7 @@ import com.mongodb.async.client.MongoDatabase;
 import org.bson.Document;
 
 /**
- * <p>Title: DemoCommand
+ * <p>Title: Command
  * <p>Description: tutorials
  * <p>Copyright: 2017/9/24 下午5:02
  * <p>Company: rongshu
@@ -28,7 +28,7 @@ import org.bson.Document;
  *
  * @version v1.0.0
  */
-public class DemoCommand {
+public class Command {
 
     /**
      * 执行脚本命令

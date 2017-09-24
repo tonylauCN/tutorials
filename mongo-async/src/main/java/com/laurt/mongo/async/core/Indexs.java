@@ -28,7 +28,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * <p>Title: DemoIndexs
+ * <p>Title: Indexs
  * <p>Description: tutorials
  * <p>Copyright: 2017/9/24 上午11:18
  * <p>Company: rongshu
@@ -38,7 +38,7 @@ import java.util.List;
  * @version v1.0.0
  */
 @Slf4j
-public class DemoIndexs {
+public class Indexs {
 
     /**
      * @param collection

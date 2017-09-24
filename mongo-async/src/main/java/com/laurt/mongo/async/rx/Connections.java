@@ -13,20 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.laurt.mongo.async.core;
+package com.laurt.mongo.async.rx;
 
 import com.laurt.mongo.async.core.listener.TestClusterListener;
 import com.laurt.mongo.async.core.listener.TestCommandListener;
 import com.laurt.mongo.async.core.listener.TestConnectionPoolListener;
 import com.mongodb.ReadPreference;
 import com.mongodb.ServerAddress;
-import com.mongodb.async.client.MongoClient;
 import com.mongodb.async.client.MongoClientSettings;
-import com.mongodb.async.client.MongoClients;
 import com.mongodb.connection.ClusterSettings;
 import com.mongodb.connection.ConnectionPoolSettings;
-import com.mongodb.connection.SocketSettings;
-import com.mongodb.connection.netty.NettyStreamFactoryFactory;
+import com.mongodb.rx.client.MongoClient;
+import com.mongodb.rx.client.MongoClients;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.TimeUnit;
@@ -34,7 +32,7 @@ import java.util.concurrent.TimeUnit;
 import static java.util.Arrays.asList;
 
 /**
- * <p>Title: DemoConnections
+ * <p>Title: Connections
  * <p>Description: tutorials
  * <p>Copyright: 2017/9/23 下午6:38
  * <p>Company: rongshu
@@ -44,39 +42,39 @@ import static java.util.Arrays.asList;
  * @version v1.0.0
  */
 @Slf4j
-public class DemoConnections {
+public class Connections {
 
-    /**
-     * 获得连接实例
-     *
-     * @return
-     */
-    public static MongoClient newInstanceWithNetty() {
-
-        ClusterSettings clusterSettings = ClusterSettings.builder()
-                .hosts(asList(
-//                        new ServerAddress("host1", 27017),
-//                        new ServerAddress("host2", 27017),
-                        new ServerAddress("localhost", 27017)))
-                .build();
-
-        SocketSettings socketSettings = SocketSettings.builder()
-                .connectTimeout(15, TimeUnit.MINUTES)
-                .receiveBufferSize(0x100000) // 1M
-                .readTimeout(5, TimeUnit.MINUTES)
-                .build();
-        MongoClientSettings settings = MongoClientSettings.builder()
-                .clusterSettings(clusterSettings)
-                .addCommandListener(new TestCommandListener())
-                .socketSettings(socketSettings)
-                .readPreference(ReadPreference.primary())
-                .streamFactoryFactory(NettyStreamFactoryFactory.builder().build())
-                .build();
-
-        MongoClient mongoClient = MongoClients.create(settings);
-
-        return mongoClient;
-    }
+//    /**
+//     * 获得连接实例
+//     *
+//     * @return
+//     */
+//    public static MongoClient newInstanceWithNetty() {
+//
+//        ClusterSettings clusterSettings = ClusterSettings.builder()
+//                .hosts(asList(
+////                        new ServerAddress("host1", 27017),
+////                        new ServerAddress("host2", 27017),
+//                        new ServerAddress("localhost", 27017)))
+//                .build();
+//
+//        SocketSettings socketSettings = SocketSettings.builder()
+//                .connectTimeout(15, TimeUnit.MINUTES)
+//                .receiveBufferSize(0x100000) // 1M
+//                .readTimeout(5, TimeUnit.MINUTES)
+//                .build();
+//        MongoClientSettings settings = MongoClientSettings.builder()
+//                .clusterSettings(clusterSettings)
+//                .addCommandListener(new TestCommandListener())
+//                .socketSettings(socketSettings)
+//                .readPreference(ReadPreference.primary())
+//                .streamFactoryFactory(NettyStreamFactoryFactory.builder().build())
+//                .build();
+//
+//        MongoClient mongoClient = MongoClients.create(settings);
+//
+//        return mongoClient;
+//    }
 
     /**
      * 不使用netty
@@ -85,12 +83,29 @@ public class DemoConnections {
      */
     public static MongoClient newInstanceDefault() {
 
+        MongoClientSettings settings = MongoClientSettings.builder()
+                .readPreference(ReadPreference.primary())
+                .connectionPoolSettings(connectionPoolSettings())
+                .addCommandListener(new TestCommandListener())
+                .clusterSettings(clusterSettings())
+                .build();
+
+        MongoClient mongoClient = MongoClients.create(settings);
+
+        return mongoClient;
+    }
+
+
+    static ClusterSettings clusterSettings() {
         ClusterSettings clusterSettings = ClusterSettings.builder()
                 .hosts(asList(
                         new ServerAddress("localhost", 27017)))
                 .addClusterListener(new TestClusterListener(ReadPreference.primary()))
                 .build();
+        return clusterSettings;
+    }
 
+    static ConnectionPoolSettings connectionPoolSettings() {
         ConnectionPoolSettings connectionPoolSettings = ConnectionPoolSettings.builder()
                 .minSize(0x10)
                 .maxSize(0xA0)
@@ -99,16 +114,7 @@ public class DemoConnections {
                 .maxConnectionIdleTime(10000, TimeUnit.MILLISECONDS)
                 .addConnectionPoolListener(new TestConnectionPoolListener())
                 .build();
-        MongoClientSettings settings = MongoClientSettings.builder()
-                .readPreference(ReadPreference.primary())
-                .connectionPoolSettings(connectionPoolSettings)
-                .addCommandListener(new TestCommandListener())
-                .clusterSettings(clusterSettings)
-                .build();
-
-        MongoClient mongoClient = MongoClients.create(settings);
-
-        return mongoClient;
+        return connectionPoolSettings;
     }
 
 

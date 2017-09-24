@@ -8,6 +8,6 @@ public class MongoAsyncApplication {
         Processor processor = new Processor();
         processor.process("demo", Constants.MONGO_COLLECTION);
 
-        Thread.sleep(1000000);
+        Thread.sleep(100000);
     }
 }
