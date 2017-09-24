@@ -13,11 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.laurt.mongoasync;
+package com.laurt.mongo.async.core;
 
+import com.mongodb.ReadPreference;
 import com.mongodb.async.SingleResultCallback;
 import com.mongodb.async.client.MongoClient;
 import com.mongodb.async.client.MongoCollection;
+import com.mongodb.async.client.MongoDatabase;
 import com.mongodb.client.model.CreateCollectionOptions;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.ValidationOptions;
@@ -56,13 +58,16 @@ public class DemoCollections {
 
         if (mongoCollection == null) {
             // 创建Collection
-            client.getDatabase(dbName).createCollection(collectionName
+            MongoDatabase database = client.getDatabase(dbName)
+                    .withReadPreference(ReadPreference.primary()); // READ -> primary
+            database.createCollection(collectionName
                     , new CreateCollectionOptions()
                             .capped(true) // 集合设置封顶限制
                             .sizeInBytes(0x10000000) // 设置256m封顶集合
                             .validationOptions(validationOptions)
                     , callbackWhenFinished);
-            mongoCollection = client.getDatabase(dbName).getCollection(collectionName);
+            mongoCollection = database.getCollection(collectionName)
+                    .withReadPreference(ReadPreference.primaryPreferred()); // READ -> primaryPreferred
         }
 
         return mongoCollection;

@@ -13,13 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.laurt.mongoasync;
+package com.laurt.mongo.async.core;
 
+import com.laurt.mongo.async.core.listener.TestClusterListener;
+import com.laurt.mongo.async.core.listener.TestCommandListener;
+import com.laurt.mongo.async.core.listener.TestConnectionPoolListener;
+import com.mongodb.ReadPreference;
 import com.mongodb.ServerAddress;
 import com.mongodb.async.client.MongoClient;
 import com.mongodb.async.client.MongoClientSettings;
 import com.mongodb.async.client.MongoClients;
 import com.mongodb.connection.ClusterSettings;
+import com.mongodb.connection.ConnectionPoolSettings;
 import com.mongodb.connection.SocketSettings;
 import com.mongodb.connection.netty.NettyStreamFactoryFactory;
 import lombok.extern.slf4j.Slf4j;
@@ -62,7 +67,9 @@ public class DemoConnections {
                 .build();
         MongoClientSettings settings = MongoClientSettings.builder()
                 .clusterSettings(clusterSettings)
+                .addCommandListener(new TestCommandListener())
                 .socketSettings(socketSettings)
+                .readPreference(ReadPreference.primary())
                 .streamFactoryFactory(NettyStreamFactoryFactory.builder().build())
                 .build();
 
@@ -81,10 +88,23 @@ public class DemoConnections {
         ClusterSettings clusterSettings = ClusterSettings.builder()
                 .hosts(asList(
                         new ServerAddress("localhost", 27017)))
+                .addClusterListener(new TestClusterListener(ReadPreference.primary()))
                 .build();
 
+        ConnectionPoolSettings connectionPoolSettings = ConnectionPoolSettings.builder()
+                .minSize(0x10)
+                .maxSize(0xA0)
+                .maxWaitTime(50000, TimeUnit.MILLISECONDS)
+                .maxWaitQueueSize(0x100)
+                .maxConnectionIdleTime(10000, TimeUnit.MILLISECONDS)
+                .addConnectionPoolListener(new TestConnectionPoolListener())
+                .build();
         MongoClientSettings settings = MongoClientSettings.builder()
-                .clusterSettings(clusterSettings).build();
+                .readPreference(ReadPreference.primary())
+                .connectionPoolSettings(connectionPoolSettings)
+                .addCommandListener(new TestCommandListener())
+                .clusterSettings(clusterSettings)
+                .build();
 
         MongoClient mongoClient = MongoClients.create(settings);
 

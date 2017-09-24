@@ -1,4 +1,4 @@
-package com.laurt.mongoasync;
+package com.laurt.mongo.async.core;
 
 public class MongoAsyncApplication {
 

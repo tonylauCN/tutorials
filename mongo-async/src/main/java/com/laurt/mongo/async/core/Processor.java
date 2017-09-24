@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.laurt.mongoasync;
+package com.laurt.mongo.async.core;
 
 import com.mongodb.async.client.MongoCollection;
 import lombok.extern.slf4j.Slf4j;
@@ -33,11 +33,13 @@ import org.bson.Document;
 @Slf4j
 public class Processor {
 
-    private DemoConnections connections;
-    private DemoCollections collections;
-    private DemoIndexs indexs;
-    private DemoWrite writer;
-    private DemoRead read;
+    private final DemoConnections connections;
+    private final DemoCollections collections;
+    private final DemoIndexs indexs;
+    private final DemoWrite writer;
+    private final DemoRead read;
+    private final DemoAggregation aggregate;
+    private final DemoCommand command;
 
     public Processor() {
         collections = new DemoCollections();
@@ -45,6 +47,8 @@ public class Processor {
         indexs = new DemoIndexs();
         writer = new DemoWrite();
         read = new DemoRead();
+        aggregate = new DemoAggregation();
+        command = new DemoCommand();
     }
 
     public void process(String dbName, String collectionName) throws InterruptedException {
@@ -55,12 +59,20 @@ public class Processor {
         BsonDocument document = collection.getWriteConcern().asDocument();
         System.err.println(document.toJson());
         long ts = System.currentTimeMillis();
-//        writer.bulkWrite(collection);
-//        indexs.createIndexs(collection);
+        writer.bulkWrite(collection);
+        indexs.createIndexs(collection);
         System.err.println(" ==> timestamp " + (System.currentTimeMillis() - ts) + "ms");
 
-        read.find(collection);
+        System.out.println("--------------------------------------------");
+//        read.find(collection);
+//        read.findWithProjection2(collection);
+
+        System.out.println("--------------------------------------------");
+        aggregate.aggregate(collection);
+        System.out.println("--------------------------------------------");
+
+        System.out.println("--------------------------------------------");
+        command.runCommand(DemoConnections.newInstanceDefault().getDatabase("demo"));
+        System.out.println("--------------------------------------------");
     }
-
-
 }
