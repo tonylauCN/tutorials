@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<configuration>
+    
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{MM-dd HH:mm:ss.SSS} [%-5level] [%t] [%C#%M:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    		<fileNamePattern>${root}/logs/system-out-%d{yyyyMMdd}.log.zip</fileNamePattern>
+    		<maxHistory>10</maxHistory>
+    	</rollingPolicy>
+    	<encoder>
+            <pattern>%d{MM-dd HH:mm:ss.SSS} [%-5level] [%t] [%C#%M:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.mongodb" level="INFO"/>
+    
+    <root level="INFO">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+
+</configuration>
