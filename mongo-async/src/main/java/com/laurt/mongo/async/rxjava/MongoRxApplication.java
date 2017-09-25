@@ -1,4 +1,4 @@
-package com.laurt.mongo.async.rx;
+package com.laurt.mongo.async.rxjava;
 
 import com.laurt.mongo.async.core.Constants;
 

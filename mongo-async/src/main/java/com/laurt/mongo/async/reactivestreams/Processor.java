@@ -13,15 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.laurt.mongo.async.rx;
+package com.laurt.mongo.async.reactivestreams;
+
 
 import com.laurt.mongo.async.core.Aggregation;
 import com.laurt.mongo.async.core.Command;
-import com.laurt.mongo.async.core.Indexs;
-import com.laurt.mongo.async.core.Writer;
-import com.mongodb.rx.client.MongoClient;
-import com.mongodb.rx.client.MongoCollection;
-import lombok.extern.slf4j.Slf4j;
+import com.mongodb.reactivestreams.client.MongoClient;
+import com.mongodb.reactivestreams.client.MongoCollection;
 import org.bson.Document;
 
 import java.util.concurrent.ExecutionException;
@@ -29,20 +27,19 @@ import java.util.concurrent.ExecutionException;
 /**
  * <p>Title: Processor
  * <p>Description: tutorials
- * <p>Copyright: 2017/9/24 上午10:18
+ * <p>Copyright: 2017/9/25 上午9:36
  * <p>Company: rongshu
  * <p>author: LiuQingqing
- * <p>package: com.laurt.mongoasync
+ * <p>package: com.laurt.mongo.async.reactivestreams
  *
  * @version v1.0.0
  */
-@Slf4j
 public class Processor {
 
     private final Connections connections;
     private final Collections collections;
-    private final Indexs indexs;
-    private final Writer writer;
+//    private final Indexs indexs;
+//    private final Writer writer;
     private final Reader read;
     private final Aggregation aggregate;
     private final Command command;
@@ -50,8 +47,8 @@ public class Processor {
     public Processor() {
         collections = new Collections();
         connections = new Connections();
-        indexs = new Indexs();
-        writer = new Writer();
+//        indexs = new Indexs();
+//        writer = new Writer();
         read = new Reader();
         aggregate = new Aggregation();
         command = new Command();

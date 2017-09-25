@@ -13,11 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.laurt.mongo.async.rx;
+package com.laurt.mongo.async.rxjava;
 
 import com.laurt.mongo.async.core.listener.TestClusterListener;
-import com.laurt.mongo.async.core.listener.TestCommandListener;
-import com.laurt.mongo.async.core.listener.TestConnectionPoolListener;
 import com.mongodb.ReadPreference;
 import com.mongodb.ServerAddress;
 import com.mongodb.async.client.MongoClientSettings;
@@ -86,7 +84,7 @@ public class Connections {
         MongoClientSettings settings = MongoClientSettings.builder()
                 .readPreference(ReadPreference.primary())
                 .connectionPoolSettings(connectionPoolSettings())
-                .addCommandListener(new TestCommandListener())
+//                .addCommandListener(new TestCommandListener())
                 .clusterSettings(clusterSettings())
                 .build();
 
@@ -112,7 +110,7 @@ public class Connections {
                 .maxWaitTime(50000, TimeUnit.MILLISECONDS)
                 .maxWaitQueueSize(0x100)
                 .maxConnectionIdleTime(10000, TimeUnit.MILLISECONDS)
-                .addConnectionPoolListener(new TestConnectionPoolListener())
+//                .addConnectionPoolListener(new TestConnectionPoolListener())
                 .build();
         return connectionPoolSettings;
     }

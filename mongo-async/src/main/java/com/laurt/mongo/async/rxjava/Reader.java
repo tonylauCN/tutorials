@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.laurt.mongo.async.rx;
+package com.laurt.mongo.async.rxjava;
 
 
 import com.laurt.mongo.async.core.Constants;
@@ -44,7 +44,7 @@ public class Reader {
 
         // Create a publisher
         Observable<Document> observable = mongoCollection.find(and(gte(Constants.MONGO_ACTIVITY_COUNT, 100)
-                , lte(Constants.MONGO_ACTIVITY_COUNT, 200)))
+                , lte(Constants.MONGO_ACTIVITY_COUNT, 400)))
 //                .sort(Sorts.ascending(Constants.MONGO_ACTIVITY_COUNT, Constants.MONGO_ACTIVITY_SID))
                 .projection(new Document(Constants.MONGO_ACTIVITY_BID, 1)
                         .append(Constants.MONGO_ACTIVITY_SID, 1)

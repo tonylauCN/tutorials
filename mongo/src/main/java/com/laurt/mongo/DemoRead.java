@@ -38,9 +38,14 @@ public class DemoRead {
 
         long ts = System.currentTimeMillis();
         mongoCollection.find(and(gte(Constants.MONGO_ACTIVITY_COUNT, 100)
-                , lte(Constants.MONGO_ACTIVITY_COUNT, 200))).forEach((Block<? super Document>) document -> {
-            System.out.println(document);
-        });
+                , lte(Constants.MONGO_ACTIVITY_COUNT, 400)))
+                .projection(new Document(Constants.MONGO_ACTIVITY_BID, 1)
+                        .append(Constants.MONGO_ACTIVITY_SID, 1)
+                        .append(Constants.MONGO_ACTIVITY_COUNT, 1)
+                        .append("_id", 0))
+                .forEach((Block<? super Document>) document -> {
+                    System.out.println(document);
+                });
         System.err.println(" -> " + (System.currentTimeMillis() - ts) + "ms");
     }
 }

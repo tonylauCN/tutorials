@@ -16,7 +16,6 @@
 package com.laurt.mongo.async.core;
 
 import com.mongodb.async.client.MongoCollection;
-import com.mongodb.client.model.Sorts;
 import org.bson.Document;
 
 import static com.mongodb.client.model.Filters.*;
@@ -38,8 +37,8 @@ public class Reader {
     void find(MongoCollection<Document> mongoCollection) {
 
         long ts = System.currentTimeMillis();
-        mongoCollection.find(and(gte(Constants.MONGO_ACTIVITY_COUNT, 10)
-                , lte(Constants.MONGO_ACTIVITY_COUNT, 20))).forEach(block -> {
+        mongoCollection.find(and(gte(Constants.MONGO_ACTIVITY_COUNT, 100)
+                , lte(Constants.MONGO_ACTIVITY_COUNT, 200))).forEach(block -> {
             System.out.println(block);
         }, ((result, t) -> {
             if (t != null) {
@@ -56,7 +55,7 @@ public class Reader {
      */
     void findWithProjection(MongoCollection<Document> mongoCollection) {
         long ts = System.currentTimeMillis();
-        mongoCollection.find(and(gte(Constants.MONGO_ACTIVITY_COUNT, 10)
+        mongoCollection.find(and(gte(Constants.MONGO_ACTIVITY_COUNT, 100)
                 , lte(Constants.MONGO_ACTIVITY_COUNT, 200)))
                 .projection(new Document(Constants.MONGO_ACTIVITY_BID, 1)
                         .append(Constants.MONGO_ACTIVITY_SID, 1)
@@ -80,10 +79,10 @@ public class Reader {
      */
     void findWithProjection2(MongoCollection<Document> mongoCollection) {
         long ts = System.currentTimeMillis();
-        mongoCollection.find(and(gte(Constants.MONGO_ACTIVITY_COUNT, 10)
-                , lte(Constants.MONGO_ACTIVITY_COUNT, 20)))
-                .sort(Sorts.ascending(Constants.MONGO_ACTIVITY_COUNT
-                        , Constants.MONGO_ACTIVITY_SID))
+        mongoCollection.find(and(gte(Constants.MONGO_ACTIVITY_COUNT, 100)
+                , lte(Constants.MONGO_ACTIVITY_COUNT, 200)))
+//                .sort(Sorts.ascending(Constants.MONGO_ACTIVITY_COUNT
+//                        , Constants.MONGO_ACTIVITY_SID))
                 .projection(fields(
                         include(Constants.MONGO_ACTIVITY_BID
                                 , Constants.MONGO_ACTIVITY_SID
