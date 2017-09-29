@@ -20,7 +20,7 @@ import java.util.concurrent.*;
 import java.util.concurrent.locks.StampedLock;
 
 /**
- * <p>Title: BlockingQueueDemo
+ * <p>Title: BlockingQueueSample
  * <p>Description: journey-processor
  * <p>Copyright: 2017/9/27 下午1:46
  * <p>Company: rongshu
@@ -29,17 +29,24 @@ import java.util.concurrent.locks.StampedLock;
  *
  * @version v1.0.0
  */
-public class BlockingQueueDemo {
+public class BlockingQueueSample {
 
     BlockingQueue[] blockingQueue = new ArrayBlockingQueue[5];
 
     StampedLock lock = new StampedLock();
     Map<Integer, Integer> data = new ConcurrentHashMap<>();
 
+
     public static void main(String[] args) {
 
-        BlockingQueueDemo process = new BlockingQueueDemo();
+        /************************************************
+         * 阻塞队列
+         * 生产者线程生产的数据>可消费的数量,生产者线程阻塞
+         * 消费者线程消费数据，无数据时阻塞消费
+         ************************************************/
+        BlockingQueueSample process = new BlockingQueueSample();
         process.init();
+
 
         ExecutorService executor = Executors.newFixedThreadPool(10);
         CompletableFuture.runAsync(() -> {

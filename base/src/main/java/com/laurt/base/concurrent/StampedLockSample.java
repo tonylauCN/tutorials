@@ -32,9 +32,9 @@ import java.util.concurrent.locks.StampedLock;
  *
  * @version v1.0.0
  */
-public class StampedLockDemo {
+public class StampedLockSample {
 
-    public StampedLockDemo() {
+    public StampedLockSample() {
 
     }
 
@@ -44,7 +44,7 @@ public class StampedLockDemo {
 
     public static void main(String[] args) {
 
-        StampedLockDemo currency = new StampedLockDemo();
+        StampedLockSample currency = new StampedLockSample();
         currency.init();
 
         ExecutorService executor = Executors.newFixedThreadPool(10);
