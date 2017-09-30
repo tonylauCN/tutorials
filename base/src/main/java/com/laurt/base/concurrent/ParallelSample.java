@@ -37,10 +37,10 @@ public class ParallelSample {
     public static void main(String[] args) {
 
         ParallelSample sample = new ParallelSample();
-        //
-//        sample.run();
+        // 数据流与循环比较
+        sample.run();
+        // 并行流与ForkJoin比较(并行流的内部实现就是ForkJoin)
         sample.runForkJoin();
-
     }
 
 
@@ -48,7 +48,6 @@ public class ParallelSample {
         /************************************************
          * 分支与合并框架的计算 (Java1.7 引入的RecursiveTask)
          ************************************************/
-
         long ts, sum;
         LongStream stream = LongStream.range(0, 10_000_000);
         long[] numbers = LongStream.range(0, 10_000_000).toArray();
@@ -63,11 +62,9 @@ public class ParallelSample {
         sum = new ForkJoinPool().invoke(task);
         System.out.println(sum);
         System.out.println("fork-join took " + (System.currentTimeMillis() - ts) + "ms");
-
     }
 
     private void run() {
-
         /************************************************
          * 1000w数据的创建与求和,用来查看各种方式的性能
          ************************************************/
