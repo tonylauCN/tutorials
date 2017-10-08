@@ -21,10 +21,10 @@ import com.mongodb.rx.client.MongoCollection;
 import org.bson.Document;
 import rx.Observable;
 import rx.Observer;
-import rx.Subscriber;
 import rx.observers.TestSubscriber;
 
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.mongodb.client.model.Filters.*;
 
@@ -52,8 +52,18 @@ public class Reader {
                         .append("_id", 0)).toObservable();
 
         // Non blocking
-        Subscriber<Document> subscriber = printDocumentSubscriber();
-        observable.subscribe(subscriber);
+//        Subscriber<Document> subscriber = printDocumentSubscriber();
+//        observable.subscribe(subscriber);
+
+        long ts = System.currentTimeMillis();
+        AtomicInteger atomicInteger = new AtomicInteger();
+        observable.subscribe((document -> {
+            System.out.println(atomicInteger.getAndIncrement() + "\t" + document.toString());
+        }), throwable -> {
+            System.out.println("The Observer errored: " + throwable.getMessage());
+        }, () -> {
+            System.err.println(" -> " + (System.currentTimeMillis() - ts) + "ms");
+        });
 
         // Block for the publisher to complete
 //        Document document = future.get();
@@ -70,7 +80,7 @@ public class Reader {
 
         return new TestSubscriber<Document>(new Observer<Document>() {
             long ts = System.currentTimeMillis();
-            Integer i = 0;
+            AtomicInteger atomicInteger = new AtomicInteger();
 
             @Override
             public void onCompleted() {
@@ -84,7 +94,7 @@ public class Reader {
 
             @Override
             public void onNext(final Document document) {
-                System.out.println(++i + "\t" + document.toString());
+                System.out.println(atomicInteger.getAndIncrement() + "\t" + document.toString());
             }
         });
     }

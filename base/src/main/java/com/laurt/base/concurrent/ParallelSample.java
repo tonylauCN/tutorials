@@ -90,32 +90,32 @@ public class ParallelSample {
         Stream<Long> data3 = LongStream.range(0, 10000000).boxed();
         System.out.println("init3 took " + (System.currentTimeMillis() - ts) + "ms");
 
-
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+        setp1:
         ts = System.currentTimeMillis();
         Float value = data1.stream()
                 .filter(predicate -> predicate % 2 == 0)
 //                .parallel()
                 .reduce(0L, Long::sum).floatValue();
-        System.out.println(value + " took1 " + (System.currentTimeMillis() - ts) + "ms");
+        System.out.println("1. " + value + " took1 " + (System.currentTimeMillis() - ts) + "ms");
 
+        setp2:
         ts = System.currentTimeMillis();
         value = data2.parallelStream()
                 .filter(predicate -> predicate % 2 == 0)
                 .parallel()
                 .reduce(0L, Long::sum).floatValue();
-        System.out.println(value + " took2 " + (System.currentTimeMillis() - ts) + "ms");
+        System.out.println("2. " + value + " took2 " + (System.currentTimeMillis() - ts) + "ms");
 
-
+        setp3:
         ts = System.currentTimeMillis();
         value = data3
                 .filter(predicate -> predicate % 2 == 0)
 //                .parallel()
                 .reduce(0L, Long::sum).floatValue();
-        System.out.println(value + " took3 " + (System.currentTimeMillis() - ts) + "ms");
+        System.out.println("3. " + value + " took3 " + (System.currentTimeMillis() - ts) + "ms");
 
-
+        setp4:
         ts = System.currentTimeMillis();
         value = 0F;
         for (int i = 0; i < data1.size(); i++) {
@@ -124,7 +124,7 @@ public class ParallelSample {
                 value += data1.get(i).floatValue();
             }
         }
-        System.out.println(value + " contrast took  " + (System.currentTimeMillis() - ts) + "ms");
+        System.out.println("4. " + value + " contrast took  " + (System.currentTimeMillis() - ts) + "ms");
     }
 
 

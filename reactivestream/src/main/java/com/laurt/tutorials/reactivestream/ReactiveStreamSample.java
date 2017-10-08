@@ -13,29 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.laurt.mongo.async.reactivestreams;
-
-import com.laurt.mongo.async.core.Constants;
-
-import java.util.concurrent.ExecutionException;
+package com.laurt.tutorials.reactivestream;
 
 /**
- * <p>Title: MongoResctiveStreamsApplication
+ * <p>Title: ReactiveStreamSample
  * <p>Description: tutorials
- * <p>Copyright: 2017/9/25 上午9:49
+ * <p>Copyright: 2017/9/30 下午2:46
  * <p>Company: rongshu
  * <p>author: LiuQingqing
- * <p>package: com.laurt.mongo.async.reactivestreams
+ * <p>package: com.laurt.tutorials.reactivestream
  *
  * @version v1.0.0
  */
-public class MongoResctiveStreamsApplication {
+public class ReactiveStreamSample {
 
-    public static void main(String[] args) throws InterruptedException, ExecutionException {
-        Processor processor = new Processor();
-        processor.process("demo", Constants.MONGO_COLLECTION);
+    //
 
+    /**
+     * {@link com.laurt.base.reactivestream.ReactiveStreamSample}
+     * @see com.laurt.base.reactivestream.ReactiveStreamSample
+     */
+    public void see() {
 
-        Thread.sleep(1000000);
+        // 简单性能测试参考base模块的ReactiveStreamSample
+        // com.laurt.tutorials.reactivestream.ReactiveStreamSample
     }
+
 }

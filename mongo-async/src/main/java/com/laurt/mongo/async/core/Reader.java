@@ -80,7 +80,7 @@ public class Reader {
     void findWithProjection2(MongoCollection<Document> mongoCollection) {
         long ts = System.currentTimeMillis();
         mongoCollection.find(and(gte(Constants.MONGO_ACTIVITY_COUNT, 100)
-                , lte(Constants.MONGO_ACTIVITY_COUNT, 200)))
+                , lte(Constants.MONGO_ACTIVITY_COUNT, 400)))
 //                .sort(Sorts.ascending(Constants.MONGO_ACTIVITY_COUNT
 //                        , Constants.MONGO_ACTIVITY_SID))
                 .projection(fields(
