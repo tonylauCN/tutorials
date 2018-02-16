@@ -1,0 +1,191 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TopLauncher<base>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.base.TopLauncher",
+            "projectName": "base",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-BlockingQueueSample<base>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.base.concurrent.BlockingQueueSample",
+            "projectName": "base",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CountDownSample<base>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.base.concurrent.CountDownSample",
+            "projectName": "base",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ExecutorServiceSample<base>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.base.concurrent.ExecutorServiceSample",
+            "projectName": "base",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ParallelSample<base>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.base.concurrent.ParallelSample",
+            "projectName": "base",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-StampedLockSample<base>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.base.concurrent.StampedLockSample",
+            "projectName": "base",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-VolatileExample<base>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.base.concurrent.VolatileExample",
+            "projectName": "base",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-FileAccessSample<base>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.base.nio.FileAccessSample",
+            "projectName": "base",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-SocketAccessSample<base>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.base.nio.SocketAccessSample",
+            "projectName": "base",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-SocketServerSample<base>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.base.nio.SocketServerSample",
+            "projectName": "base",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Sample<base>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.base.nio.mongo.driver.sample.Sample",
+            "projectName": "base",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-KafkaApplication<kafka>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.tutorial.kafka.KafkaApplication",
+            "projectName": "kafka",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MongoAsyncApplication<mongo-async>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.mongo.async.core.MongoAsyncApplication",
+            "projectName": "mongo-async",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MongoResctiveStreamsApplication<mongo-async>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.mongo.async.reactivestreams.MongoResctiveStreamsApplication",
+            "projectName": "mongo-async",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MongoRxApplication<mongo-async>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.mongo.async.rxjava.MongoRxApplication",
+            "projectName": "mongo-async",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MongoApplication<mongo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.laurt.mongo.MongoApplication",
+            "projectName": "mongo",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Attach)",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": 0
+        }
+    ]
+}
