@@ -42,6 +42,8 @@ fun.p(c())
 fun.p(c())
 
 
+print = fun.p
 
+print(_VERSION)
 
 

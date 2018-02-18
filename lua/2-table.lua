@@ -72,4 +72,3 @@ iterator(stack)
 -- 带有nil的可变参数
 print(multi_params_return(1,2,3,nil,5,6,7))
 print(multi_params_return("a","b","c",nil,"d"))
-
