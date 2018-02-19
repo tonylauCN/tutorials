@@ -73,7 +73,6 @@ for i=1,10 do
     stack = {next = stack, value = i}
 end 
 
-
 local list = {next=list,value=1}
 local l = list
 while l do 

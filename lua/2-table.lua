@@ -33,7 +33,7 @@ function multi_params_return(...)
     -- 迭代可变参数且参数中存在nil
     local v
     for i=1,select("#", ...) do
-        local arg = select(i,...)
+        local arg = select(i, ...)
         if arg then
             if v then
                 v = v.."->"..arg
