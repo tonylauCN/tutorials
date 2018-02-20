@@ -7,11 +7,10 @@ f()
 i = 1
 local fs = assert(loadstring("i = i + 1"))()
 print(i)
-fs()
 print(i)
 
-print "enter a number"
-n=io.read("*number")
-if not n then 
-    error("invalid input")
-end
+-- print "enter a number"
+-- n=io.read("*number")
+-- if not n then 
+--     error("invalid input")
+-- end
