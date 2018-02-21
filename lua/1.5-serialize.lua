@@ -26,14 +26,17 @@ function save(name, value, saved)
                 save(fname, v, saved)
             end
         end
+    elseif type(value) == "function" then
+        -- io.write(type(value), "\n")
     else
         error("can not save a " .. type(value))
     end
 end
 
 -- serialize test
-a = {x = 1, y = 2; {3, 4, 5}}
+a = {x = 1, y = 2, {3, 4, 5}}
 a[2] = a
 a.z = a[1]
+a.f = print
 
 save("a", a)
