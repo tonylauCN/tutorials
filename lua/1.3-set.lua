@@ -55,7 +55,21 @@ print("Set\t[Loaded]")
 
 mt.__add = Set.union -- "+" for union
 mt.__mul = Set.intersection -- "*" for intersection
-
+-- <=
+mt.__le = function(a, b)
+    for k in pairs(a) do
+        if not b[k] then
+            return false
+        end
+    end
+    return true
+end
+mt.__lt = function(a, b)
+    return a <= b and not (b <= a)
+end
+mt.__eq = function(a, b)
+    return a <= b and b <= a
+end
 --[[ 元表算数及关系类
 __sub   -- 减法
 __div   -- 除法
@@ -67,7 +81,7 @@ __eq    -- ==
 __lt    -- <
 __le    -- <=
 ]]
- --
+--
 
 -- -- do test
 -- local arr1 = {"a", "b", "c", 1, 2, 3}
