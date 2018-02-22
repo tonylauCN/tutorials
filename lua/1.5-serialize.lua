@@ -1,6 +1,6 @@
 -- serialize
-
-function basicSerialize(o)
+Serialize= {}
+function Serialize.basicSerialize(o)
     if type(o) == "number" then
         return tostring(o)
     else
@@ -8,12 +8,12 @@ function basicSerialize(o)
     end
 end
 
-function save(name, value, saved)
+function Serialize.save(name, value, saved)
     saved = saved or {}
     io.write(name, " = ")
 
     if type(value) == "number" or type(value) == "string" then
-        io.write(basicSerialize(value), "\n")
+        io.write(Serialize.basicSerialize(value), "\n")
     elseif type(value) == "table" then
         if saved[value] then
             io.write(saved[value], "\n")
@@ -21,9 +21,9 @@ function save(name, value, saved)
             saved[value] = name
             io.write("{}", "\n")
             for k, v in pairs(value) do
-                k = basicSerialize(k)
+                k = Serialize.basicSerialize(k)
                 local fname = string.format("%s[%s]", name, k)
-                save(fname, v, saved)
+                Serialize.save(fname, v, saved)
             end
         end
     elseif type(value) == "function" then
@@ -34,9 +34,9 @@ function save(name, value, saved)
 end
 
 -- serialize test
-a = {x = 1, y = 2, {3, 4, 5}}
-a[2] = a
-a.z = a[1]
-a.f = print
+-- a = {x = 1, y = 2, {3, 4, 5}}
+-- a[2] = a
+-- a.z = a[1]
+-- a.f = print
 
-save("a", a)
+-- Serialize.save("a", a)
