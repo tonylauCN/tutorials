@@ -45,3 +45,6 @@ fun.p(c())
 
 print = fun.p
 print(_VERSION)
+
+print(os.date("%Y-%m-%d"))
+print(os.getenv("HOME"))
