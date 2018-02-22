@@ -10,4 +10,4 @@ set(SRC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lua/CAPI)
 
 add_executable(demo ${SRC_PATH}/sample.c)
 
-#target_link_libraries(tutorials lua)
+target_link_libraries(demo lua)

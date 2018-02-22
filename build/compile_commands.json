@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/ryuu/git/tutorials/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/cc    -std=gnu99 -Wall -Werror -Wunused-variable -g   -o CMakeFiles/demo.dir/lua/CAPI/sample.c.o   -c /Users/ryuu/git/tutorials/lua/CAPI/sample.c",
+  "file": "/Users/ryuu/git/tutorials/lua/CAPI/sample.c"
+}
+]
