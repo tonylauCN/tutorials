@@ -64,12 +64,15 @@ mt.__le = function(a, b)
     end
     return true
 end
+-- <
 mt.__lt = function(a, b)
     return a <= b and not (b <= a)
 end
+-- ==
 mt.__eq = function(a, b)
     return a <= b and b <= a
 end
+
 --[[ 元表算数及关系类
 __sub   -- 减法
 __div   -- 除法
