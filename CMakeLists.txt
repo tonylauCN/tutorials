@@ -8,6 +8,6 @@ set(CMAKE_BUILD_TYPE Debug)
 
 set(SRC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lua/CAPI)
 
-add_executable(demo ${SRC_PATH}/sample.c)
+add_executable(sample ${SRC_PATH}/sample.c)
 
-target_link_libraries(demo lua)
+target_link_libraries(sample lua)

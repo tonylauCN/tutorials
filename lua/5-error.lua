@@ -1,5 +1,6 @@
-
+--
 -- error
+-- pcall = protected call
 local status, err = pcall(function() error({code=200, msg="not found"}) end)
 print(status)
 if not status then
