@@ -1,0 +1,110 @@
+
+2018/02/24 10:16:43 [error] 44026#0: *1 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:35):2: module 'mobdebug' not found:
+	no field package.preload['mobdebug']
+	no file '../../debugger/lualibs/mobdebug/mobdebug.lua'
+	no file '../../debugger/lualibs/mobdebug.lua'
+	no file 'mobdebug.lua'
+	no file '/usr/local/openresty/lualib/mobdebug.lua'
+	no file '/usr/local/openresty/lualib/mobdebug/mobdebug.lua'
+	no file '/usr/local/openresty/site/lualib/mobdebug.ljbc'
+	no file '/usr/local/openresty/site/lualib/mobdebug/init.ljbc'
+	no file '/usr/local/openresty/lualib/mobdebug.ljbc'
+	no file '/usr/local/openresty/lualib/mobdebug/init.ljbc'
+	no file '/usr/local/openresty/site/lualib/mobdebug.lua'
+	no file '/usr/local/openresty/site/lualib/mobdebug/init.lua'
+	no file '/usr/local/openresty/lualib/mobdebug.lua'
+	no file '/usr/local/openresty/lualib/mobdebug/init.lua'
+	no file './mobdebug.lua'
+	no file '/usr/local/openresty/luajit/share/luajit-2.1.0-beta3/mobdebug.lua'
+	no file '/usr/local/share/lua/5.1/mobdebug.lua'
+	no file '/usr/local/share/lua/5.1/mobdebug/init.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/mobdebug.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/mobdebug/init.lua'
+	no file '../../debugger/clibs/mobdebug.dylib'
+	no file '/usr/local/openresty/lualib/mobdebug.dylib'
+	no file '/usr/local/openresty/lualib/mobdebug/mobdebug.dylib'
+	no file '/usr/local/openresty/site/lualib/mobdebug.so'
+	no file '/usr/local/openresty/lualib/mobdebug.so'
+	no file './mobdebug.so'
+	no file '/usr/local/lib/lua/5.1/mobdebug.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/mobdebug.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+stack traceback:
+coroutine 0:
+	[C]: in function 'require'
+	content_by_lua(nginx.conf:35):2: in function <content_by_lua(nginx.conf:35):1>, client: 127.0.0.1, server: , request: "GET /redis HTTP/1.1", host: "localhost:8010"
+2018/02/24 10:20:00 [error] 44246#0: *1 attempt to send data on a closed socket: u:0000000000000000, c:0000000000000000, ft:0 eof:0, client: 127.0.0.1, server: , request: "GET /redis HTTP/1.1", host: "localhost:8010"
+2018/02/24 10:21:50 [error] 44246#0: *3 attempt to send data on a closed socket: u:0000000000000000, c:0000000000000000, ft:0 eof:0, client: 127.0.0.1, server: , request: "GET /redis HTTP/1.1", host: "localhost:8010"
+2018/02/24 10:26:30 [error] 44792#0: *1 attempt to send data on a closed socket: u:0000000000000000, c:0000000000000000, ft:0 eof:0, client: 127.0.0.1, server: , request: "GET /redis HTTP/1.1", host: "localhost:8010"
+2018/02/24 10:27:02 [error] 44792#0: *4 attempt to send data on a closed socket: u:0000000000000000, c:0000000000000000, ft:0 eof:0, client: 127.0.0.1, server: , request: "GET /redis HTTP/1.1", host: "localhost:8010"
+2018/02/24 10:27:20 [error] 44792#0: *3 attempt to send data on a closed socket: u:0000000000000000, c:0000000000000000, ft:0 eof:0, client: 127.0.0.1, server: , request: "GET /redis HTTP/1.1", host: "localhost:8010"
+2018/02/24 10:27:20 [alert] 44792#0: *4 setsockopt(TCP_NODELAY) failed (22: Invalid argument) while keepalive, client: 127.0.0.1, server: 0.0.0.0:8010
+2018/02/24 10:36:31 [error] 45370#0: *1 lua entry thread aborted: runtime error: ...it/tutorials/openresty/redis-bitmap/lua/redis-bitmap.lua:2: module 'mobdebug' not found:
+	no field package.preload['mobdebug']
+	no file '../debugger/mobdebug/mobdebug.lua'
+	no file '/usr/local/openresty/lualib/mobdebug.lua'
+	no file '/usr/local/openresty/lualib/mobdebug/mobdebug.lua'
+	no file '/usr/local/openresty/site/lualib/mobdebug.ljbc'
+	no file '/usr/local/openresty/site/lualib/mobdebug/init.ljbc'
+	no file '/usr/local/openresty/lualib/mobdebug.ljbc'
+	no file '/usr/local/openresty/lualib/mobdebug/init.ljbc'
+	no file '/usr/local/openresty/site/lualib/mobdebug.lua'
+	no file '/usr/local/openresty/site/lualib/mobdebug/init.lua'
+	no file '/usr/local/openresty/lualib/mobdebug.lua'
+	no file '/usr/local/openresty/lualib/mobdebug/init.lua'
+	no file './mobdebug.lua'
+	no file '/usr/local/openresty/luajit/share/luajit-2.1.0-beta3/mobdebug.lua'
+	no file '/usr/local/share/lua/5.1/mobdebug.lua'
+	no file '/usr/local/share/lua/5.1/mobdebug/init.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/mobdebug.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/mobdebug/init.lua'
+	no file '/usr/local/openresty/site/lualib/mobdebug.so'
+	no file '/usr/local/openresty/lualib/mobdebug.so'
+	no file './mobdebug.so'
+	no file '/usr/local/lib/lua/5.1/mobdebug.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/mobdebug.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+stack traceback:
+coroutine 0:
+	[C]: in function 'require'
+	...it/tutorials/openresty/redis-bitmap/lua/redis-bitmap.lua:2: in function <...it/tutorials/openresty/redis-bitmap/lua/redis-bitmap.lua:1>, client: 127.0.0.1, server: , request: "GET /redis HTTP/1.1", host: "localhost:8010"
+2018/02/24 10:36:32 [error] 45370#0: *2 lua entry thread aborted: runtime error: ...it/tutorials/openresty/redis-bitmap/lua/redis-bitmap.lua:2: module 'mobdebug' not found:
+	no field package.preload['mobdebug']
+	no file '../debugger/mobdebug/mobdebug.lua'
+	no file '/usr/local/openresty/lualib/mobdebug.lua'
+	no file '/usr/local/openresty/lualib/mobdebug/mobdebug.lua'
+	no file '/usr/local/openresty/site/lualib/mobdebug.ljbc'
+	no file '/usr/local/openresty/site/lualib/mobdebug/init.ljbc'
+	no file '/usr/local/openresty/lualib/mobdebug.ljbc'
+	no file '/usr/local/openresty/lualib/mobdebug/init.ljbc'
+	no file '/usr/local/openresty/site/lualib/mobdebug.lua'
+	no file '/usr/local/openresty/site/lualib/mobdebug/init.lua'
+	no file '/usr/local/openresty/lualib/mobdebug.lua'
+	no file '/usr/local/openresty/lualib/mobdebug/init.lua'
+	no file './mobdebug.lua'
+	no file '/usr/local/openresty/luajit/share/luajit-2.1.0-beta3/mobdebug.lua'
+	no file '/usr/local/share/lua/5.1/mobdebug.lua'
+	no file '/usr/local/share/lua/5.1/mobdebug/init.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/mobdebug.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/mobdebug/init.lua'
+	no file '/usr/local/openresty/site/lualib/mobdebug.so'
+	no file '/usr/local/openresty/lualib/mobdebug.so'
+	no file './mobdebug.so'
+	no file '/usr/local/lib/lua/5.1/mobdebug.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/mobdebug.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+stack traceback:
+coroutine 0:
+	[C]: in function 'require'
+	...it/tutorials/openresty/redis-bitmap/lua/redis-bitmap.lua:2: in function <...it/tutorials/openresty/redis-bitmap/lua/redis-bitmap.lua:1>, client: 127.0.0.1, server: , request: "GET /redis HTTP/1.1", host: "localhost:8010"
+2018/02/24 10:37:38 [error] 45482#0: *1 lua entry thread aborted: runtime error: ../debugger/lualibs/mobdebug/mobdebug.lua:102: loop or previous error loading module 'socket'
+stack traceback:
+coroutine 0:
+	[C]: in function 'require'
+	...it/tutorials/openresty/redis-bitmap/lua/redis-bitmap.lua:2: in function <...it/tutorials/openresty/redis-bitmap/lua/redis-bitmap.lua:1>, client: 127.0.0.1, server: , request: "GET /redis HTTP/1.1", host: "localhost:8010"
+2018/02/24 10:37:50 [error] 45482#0: *2 lua entry thread aborted: runtime error: ...it/tutorials/openresty/redis-bitmap/lua/redis-bitmap.lua:2: loop or previous error loading module 'mobdebug'
+stack traceback:
+coroutine 0:
+	[C]: in function 'require'
+	...it/tutorials/openresty/redis-bitmap/lua/redis-bitmap.lua:2: in function <...it/tutorials/openresty/redis-bitmap/lua/redis-bitmap.lua:1>, client: 127.0.0.1, server: , request: "GET /redis HTTP/1.1", host: "localhost:8010"
+2018/02/24 10:39:44 [error] 45660#0: *1 attempt to send data on a closed socket: u:0000000000000000, c:0000000000000000, ft:0 eof:0, client: 127.0.0.1, server: , request: "GET /redis HTTP/1.1", host: "localhost:8010"
