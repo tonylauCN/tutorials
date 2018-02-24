@@ -1,15 +1,19 @@
 
--- self 
+-- self
 Account = {balance = 100}
-
+local mt = {__index = Account}
 function Account:draw(v)
     self.balance = self.balance - v
 end
+function Account:new(self)
+    return setmetatable({}, mt)
+end
 
-a = Account
+local a = Account:new()
+local b = Account:new()
 Account = nil
-b = a
 a:draw(10)
+b:draw(40)
 print(a.balance)
 print(b.balance)
 
